@@ -29,7 +29,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //Firebase dependencies
     compile 'com.google.firebase:firebase-core:10.2.0' //Analytics
-
+    compile 'com.google.firebase:firebase-crash:10.2.0' //Crash Reporting
 }
 
 
