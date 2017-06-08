@@ -47,6 +47,12 @@ public class Informations extends AppCompatActivity {
         TextView instanceId = (TextView) findViewById(R.id.instance_id);
         instanceId.setText(instanceId.getText()+ FirebaseInstanceId.getInstance().getId());
 
+        // scrrenview tracking - Firebase datalayer
+        Bundle params = new Bundle();
+        params.putString("screenName", "Informations");
+        // button tracking - Send the event to Firebase Analytics
+        mFirebaseAnalytics.logEvent("screenView", params);
+
         Context context = getApplicationContext();
         //Définition du toast
         CharSequence text = "INFO - Non-fatal error well reported!";

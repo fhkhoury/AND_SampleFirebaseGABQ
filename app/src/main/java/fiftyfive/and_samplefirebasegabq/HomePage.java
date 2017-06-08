@@ -21,7 +21,6 @@ public class HomePage extends AppCompatActivity {
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Utils.configureSingleton(mFirebaseAnalytics);
 
-        //TODO : FOnction pour pousser le screenview
         // scrrenview tracking - Firebase datalayer
         Bundle params = new Bundle();
         params.putString("screenName", "HomePage");

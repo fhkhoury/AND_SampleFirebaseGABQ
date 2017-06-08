@@ -8,8 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 public class Detail extends AppCompatActivity {
 
+
+    private FirebaseAnalytics mFirebaseAnalytics; //Firebase Analytics object
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,16 @@ public class Detail extends AppCompatActivity {
         final Toast toast = Toast.makeText(context, text, duration);
 
         setContentView(R.layout.activity_detail);
+
+        // Obtain the FirebaseAnalytics instance & configure singleton
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        Utils.configureSingleton(mFirebaseAnalytics);
+
+        // scrrenview tracking - Firebase datalayer
+        Bundle params = new Bundle();
+        params.putString("screenName", "Detail");
+        // button tracking - Send the event to Firebase Analytics
+        mFirebaseAnalytics.logEvent("screenView", params);
 
         Button call = (Button) findViewById(R.id.call);
         call.setOnClickListener(new View.OnClickListener() {
