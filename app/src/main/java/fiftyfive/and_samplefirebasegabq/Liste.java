@@ -6,13 +6,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 public class Liste extends AppCompatActivity {
+
+    private FirebaseAnalytics mFirebaseAnalytics; //Firebase Analytics object
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste);
+
+        // Obtain the FirebaseAnalytics instance & configure singleton
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        Utils.configureSingleton(mFirebaseAnalytics);
+
+        // scrrenview tracking - Firebase datalayer
+        Bundle params = new Bundle();
+        params.putString("screenName", "List");
+        // button tracking - Send the event to Firebase Analytics
+        mFirebaseAnalytics.logEvent("screenView", params);
 
         Button goToDetail = (Button) findViewById(R.id.goToDetail);
         goToDetail.setOnClickListener(new View.OnClickListener() {
