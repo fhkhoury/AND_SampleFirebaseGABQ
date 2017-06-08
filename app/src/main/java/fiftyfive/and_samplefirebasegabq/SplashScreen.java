@@ -24,11 +24,15 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        // Obtain the FirebaseAnalytics instance.
+        // Obtain the FirebaseAnalytics instance & configure singleton
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Utils.configureSingleton(mFirebaseAnalytics);
-        mFirebaseAnalytics.setCurrentScreen(this, Utils.getActivityName(this), Utils.getActivityName(this)); // Sets the current screen name, which specifies the current visual context in your app
 
+        // scrrenview tracking - Firebase datalayer
+        Bundle params = new Bundle();
+        params.putString("screenName", "Splash");
+        // button tracking - Send the event to Firebase Analytics
+        mFirebaseAnalytics.logEvent("screenView", params);
 
         new Handler().postDelayed(new Runnable() {
             @Override

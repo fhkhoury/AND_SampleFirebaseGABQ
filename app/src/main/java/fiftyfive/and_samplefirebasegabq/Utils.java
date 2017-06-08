@@ -3,9 +3,11 @@ package fiftyfive.and_samplefirebasegabq;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.provider.Settings;
 import android.util.Log;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import static java.lang.Boolean.TRUE;
 
@@ -15,7 +17,7 @@ import static java.lang.Boolean.TRUE;
 
 public class Utils extends Activity {
 
-    private static String android_id =  android.provider.Settings.Secure.ANDROID_ID;
+    public static String instance_id = FirebaseInstanceId.getInstance().getId();
 
     // A function to get the name of an activity
     public static String getActivityName(Activity activity){
@@ -33,8 +35,9 @@ public class Utils extends Activity {
 
     // Firebase Analytics configuration stream
     public static void configureSingleton(FirebaseAnalytics firebaseSingleton) {
-        firebaseSingleton.setUserId(android_id); //Set a default Firebase user id based on the ANDROID_ID
-        firebaseSingleton.setMinimumSessionDuration(0); // Sets the minimum engagement time required before starting a session. Sets to "0"
+        String instance_id = FirebaseInstanceId.getInstance().getId();
+        firebaseSingleton.setUserId(instance_id); //Set a default Firebase user id based on the Firebase Instance id
+        firebaseSingleton.setMinimumSessionDuration(0); // Sets the minimum engagement time required before starting a session. Setted to "0"
         firebaseSingleton.setAnalyticsCollectionEnabled(TRUE); // Activate Firebase Analytics data collection
     }
 }

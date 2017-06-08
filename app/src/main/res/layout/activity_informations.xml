@@ -35,15 +35,26 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:id="@+id/udid"
+        android:id="@+id/android_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="UDID: "
+        android:text="Android Id: "
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="219dp"
         android:layout_marginTop="24dp"
         android:layout_below="@+id/appName"
         android:layout_alignStart="@+id/appName" />
+
+    <TextView
+        android:id="@+id/instance_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Firebase Instance Id: "
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="219dp"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/android_id"
+        android:layout_alignStart="@+id/android_id" />
 
 
     <Button
